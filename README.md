@@ -18,3 +18,55 @@ $ git add file.txt
 $ git commit -m "resolved merge conflict"
 $ git checkout feature
 $ git rebase main
+  9th
+  <!DOCTYPE html>
+<html>
+    <head>
+        <title> Task Manager </title>
+        <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <h2> Task Manager </h2>
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button id="addTask">Add Task</button>
+
+        <h3>Tasks:</h3>
+        <ul id="tasklist"></ul>
+
+
+        <script src="script.js"></script>
+    </body>
+</html>
+
+5. create script.js
+
+$(document).ready(function(){
+    // Addtask
+    $("#addTask").click(function(){
+        let task = $("#taskInput").val();
+        if(task){
+            $("#tasklist").append("<li>" + task + " <button class='remove'>Remove</button></li>");
+            $("#taskInput").val("");
+        }
+    });
+
+    // Remove task
+    $(document).on("click", ".remove", function(){
+        $(this).parent().remove();
+    });
+
+    // Retrieve all tasks
+    function getTasks(){
+        let tasks = [];
+        $("#tasklist li").each(function(){
+            tasks.push($(this).text().replace(" Remove", ""));
+        });
+        return tasks;
+    }
+
+    // Log tasks whenever list changes
+    $("#tasklist").on("DOMSubtreeModified", function(){
+        console.log("current Tasks:", getTasks());
+    });
+});
