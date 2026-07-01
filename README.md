@@ -70,3 +70,41 @@ $(document).ready(function(){
         console.log("current Tasks:", getTasks());
     });
 });
+8th 
+Create folder in desktop (DockerDemo)
+Open vs code select folder DockerDemo
+
+Create file (index.html)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Demo</title>
+</head>
+<body>
+    <h1>Hello from Docker!</h1>
+    <h2>DevOps Practical</h2>
+</body>
+</html>
+
+Create another file (Dockerfile)
+
+FROM nginx
+COPY index.html /usr/share/nginx/html/index.html
+
+Next open commd promt and do this step
+
+1. docker --version
+2. docker info
+3. docker pull nginx
+4. docker images
+5. docker run -d nginx
+6. docker ps
+7. docker ps -a
+8. docker stop (container_id)
+9. docker rm  (container _id)
+10. docker rmi (image id)
+11. cd DockerDemo
+12. docker build -t myimage .
+13. docker run -d -p 8081:80 myimage
+14. Open chrome and type http://localhost:8081
